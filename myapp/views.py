@@ -1,8 +1,8 @@
 from myapp import app, db
 from flask import render_template, flash, url_for, redirect, request
 from flask.ext.login import login_user, logout_user, login_required
-from myapp.forms import Login, Signup
-from myapp.models import User, Article
+from myapp.forms import Login, Signup, Post_Form
+from myapp.models import User, Post
 
 
 @app.route('/')
@@ -31,9 +31,9 @@ def login():
         if user.verify_password(form.pswd.data):
             login_user(user)
             print('login success!')
-
             return redirect(url_for('main'))
         else:
+            print('login failed ><')
             return redirect(url_for('login'))
 
     return render_template('login.html',form=form)
@@ -44,10 +44,18 @@ def logout():
     logout_user()
     return redirect(url_for('main'))
 
-@app.route('/post')
+@app.route('/post',methods=('GET','POST'))
+#@login_required()
 def post():
-    #return render_template("editor.html")
-    return "post page"
+    form = Post_Form()
+    if form.validate_on_submit():
+        post = Post(title=form.title.data, tag=form.tag.data, body=form.body.data)
+        db.session.add(post)
+        db.session.commit()
+        print("post success")
+        flash('Successfully posted')
+        return redirect(url_for('main'))
+    return render_template('post.html', form=form)
 
 @app.route('/hoge')
 @login_required

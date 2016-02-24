@@ -1,6 +1,6 @@
 from flask.ext.login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-
+from datetime import datetime
 from myapp import db
 from . import login_manager
 
@@ -23,7 +23,7 @@ class User(UserMixin, db.Model):
 
     year = db.Column(db.Integer)
 
-    user_id = db.relationship('Article', backref='user')
+    user_id = db.relationship('Post', backref='user')
 
     password_hash = db.Column(db.String(128))
 
@@ -70,23 +70,25 @@ class User(UserMixin, db.Model):
 
 
 
-class Article(db.Model):
+class Post(db.Model):
     """
     本文記事　まわり
     """
-    __tablename__ = 'article'
+    __tablename__ = 'post'
 
-    id = db.Column(db.Integer, primary_key=True)  # ARTICLE ID, PRIMARY
+    id = db.Column(db.Integer, primary_key=True)  # :POST ID, PRIMARY
 
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     title = db.Column(db.String(512))
+    tag = db.Column(db.String(32))
     body = db.Column(db.Text)
     published_on = db.Column(db.DateTime)
 
-    def __init__(self,author_id,title,body,published_on):
-        self.author_id = author_id
+    def __init__(self,title,tag,body):
+        self.author_id = 0
         self.title = title
+        self.tag = tag
         self.body = body
-        self.published_on = published_on
+        self.published_on = datetime.now()
 
 
