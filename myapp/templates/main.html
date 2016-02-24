@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="container">
+	<div class="jumbotron">
+    <h1>めいんぺーじ</h1>
+	</div>
+    <div><h2>
+    Hello,
+    {% if current_user.is_authenticated() %}
+        {{ current_user.username }}
+    {% else %}
+        Stranger
+    {% endif %}
+    </h2>
+    </div>
+
+
+
+</div>
+
+{% endblock %}
