@@ -52,4 +52,5 @@ def post():
 @app.route('/hoge')
 @login_required
 def hoge():
+    #login check
     return 'You are logged in!'
