@@ -1,4 +1,6 @@
 *.pyc
 __pychache__/
+.idea/
+.python-version
 
 
