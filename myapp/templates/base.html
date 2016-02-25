@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://bootswatch.com/cosmo/bootstrap.min.css">
     {% block extrastyle %}{% endblock %}
 </head>
 <body>
@@ -19,19 +19,13 @@
             <a class="navbar-brand" href="index.html"><span>teamH</span></a></div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active">
-                    <a href="/">
-                        <span class="glyphicon glyphicon-home">
-                        </span>
-                        Home
-                    </a>
-                </li>
-                <li><a href="/post">投稿</a></li>
-                <li><a href="/"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>更新</a></li>
+                <li class="active"><a href="/"><span class="glyphicon glyphicon-home"></span> Home</a></li>
+                <li><a href="/post"><span class="glyphicon glyphicon-edit"> 投稿</span></a></li>
+                <li><a href="/"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span> 更新</a></li>
                 {% if current_user.is_authenticated() %}
-                    <li><a href="logout">Logout</a></li>
+                    <li><a href="logout"><span class="glyphicon glyphicon-log-out"> Logout</span></a></li>
                 {% else %}
-                    <li><a href="login">Login</a></li>
+                    <li><a href="login"><span class="glyphicon glyphicon-log-in"> Login</sapn></a></li>
                 {% endif %}
             </ul>
         </div>
