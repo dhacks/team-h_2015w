@@ -9,8 +9,12 @@ from datetime import datetime
 @app.route('/')
 def main():
     posts = Post.query.order_by(Post.published_on)
-
     return render_template('main.html',posts = posts)
+
+@app.route('/<int:postid>')
+def page(postid):
+    page = Post.query.get(postid)
+    return render_template('page.html',page=page)
 
 
 @app.route('/signup', methods=('GET', 'POST'))
@@ -44,12 +48,18 @@ def login():
 
 @app.route('/logout')
 def logout():
+    """
+    ログインページ
+    """
     logout_user()
     return redirect(url_for('main'))
 
 @app.route('/post',methods=('GET','POST'))
 @login_required
 def post():
+    """
+    記事をポストするページ
+    """
     form = Post_Form()
     if form.validate_on_submit():
         post = Post(title=form.title.data, author_id= current_user.get_id() ,tag = form.tag.data,

@@ -104,7 +104,10 @@
                         <li class="list-group-item">
                             <div class="container-fluid">
                                 <p class="small text-muted reply-to">{{ post.author_id }}</p>
-                                <p>{{ post.title }}</p>
+
+                                <a href="/{{post.id}}">{{ post.title }}</a>
+                                <!-- うえ、文字サイズ変更お願いします-->
+
                                 <span class="small">created_at:{{ post.published_on }}</span>
                                 <span class="small glyphicon glyphicon-tag">{{ post.tag }}</span>
                             </div>
