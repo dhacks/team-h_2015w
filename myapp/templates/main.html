@@ -167,7 +167,7 @@
         #sidebar .container{
             width: 100%;
         }
-    </style>
+        </style>
         <div id="profile">
             <div class="container">
                 <style>
@@ -179,10 +179,32 @@
                     <div class="panel-heading">
                         <h3 class="panel-title">ユーザ情報</h3>
                     </div>
-                    <div class="panel-body">
-                        <h4 class="leader">Hiro</h4>
+                    {% if current_user.is_authenticated() %}
+                        <div class="panel-body">
+                        <h4 class="leader">{{ current_user.username }}</h4>
                         <p>Doshisha Univ.</p>
-                    </div>
+                        </div>
+                    {% else %}
+                        <div class="panel-body">
+                            <h4 class="leader">Hello,Stranger</h4>
+                            <p>新規登録は<a href="/signup">こちら</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+        <div id="taglist">
+            <div class="container">
+                <style>
+                #sidebar .container{
+                 width: 100%;
+             }
+             </style>
+                <div class="list-group">
+                    <a class="list-group-item" href="#">HTML</a>
+                    <a class="list-group-item" href="#">CSS</a>
+                    <a class="list-group-item" href="#">JavaScript</a>
                 </div>
             </div>
         </div>

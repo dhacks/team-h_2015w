@@ -19,18 +19,20 @@
             <a class="navbar-brand" href="index.html"><span>teamH</span></a></div>
         <div class="collapse navbar-collapse" id="navbar-ex-collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a href="main.html">Home</a></li>
+                <li class="active">
+                    <a href="/">
+                        <span class="glyphicon glyphicon-home">
+                        </span>
+                        Home
+                    </a>
+                </li>
                 <li><a href="/post">投稿</a></li>
-                <li><a href="">更新</a></li>
-                <li><a href="/login">ログイン</a></li>
-                <!-- login button作る
-                     % if logged in %}
-                    !logout button!
-                % else %}
-                    !login button!
-                % endif}
-                みたいな,,,
-                -->
+                <li><a href="/"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>更新</a></li>
+                {% if current_user.is_authenticated() %}
+                    <li><a href="logout">Logout</a></li>
+                {% else %}
+                    <li><a href="login">Login</a></li>
+                {% endif %}
             </ul>
         </div>
     </div>
