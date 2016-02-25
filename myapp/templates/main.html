@@ -3,7 +3,6 @@
 {% block main %}
 
 <<<<<<< HEAD
-<<<<<<< HEAD
 
 
 
@@ -16,194 +15,189 @@
         }
     </style>
     <div class="container">
-=======
-    <div id="document">
->>>>>>> 115f0e750c9ab5fc0b31178608d3e6a53fdaa3fb
         <style>
-            #document {
-                float: left;
-                width: 80%;
+            #document .container{
+                margin: 0px;
+                padding-top: 1%;
+                padding-left: 1%;
+                padding-right: 1%;
             }
         </style>
-        <div class="container">
+        <!--
+        <form action="/search" method="get" class="navbar-form navbar-left searchForm" data-reactid=".0.0.0.1"><div class="searchForm_queryWrapper" data-reactid=".0.0.0.1.0"><input placeholder="キーワードを入力" autocomplete="off" name="q" class="form-control searchForm_query" value="" data-reactid=".0.0.0.1.0.0"><div style="display:none;" class="searchQuerySupport" data-reactid=".0.0.0.1.0.1"><div class="searchQuerySupport_userSearch" data-reactid=".0.0.0.1.0.1.0"><label class="searchQuerySupport_label" data-reactid=".0.0.0.1.0.1.0.0">ユーザーを指定</label><input placeholder="例) qiitan" class="searchQuerySupport_input" value="" data-reactid=".0.0.0.1.0.1.0.1"></div><div class="searchQuerySupport_tagSearch" data-reactid=".0.0.0.1.0.1.1"><label class="searchQuerySupport_label" data-reactid=".0.0.0.1.0.1.1.0">タグを指定</label><input placeholder="例) Ruby フレームワーク" class="searchQuerySupport_input" value="" data-reactid=".0.0.0.1.0.1.1.1"><div class="searchQuerySupport_sort" data-reactid=".0.0.0.1.0.1.1.2"><div class="searchQuerySupport_sortLabel" data-reactid=".0.0.0.1.0.1.1.2.0">ソート</div><select name="sort" data-reactid=".0.0.0.1.0.1.1.2.1"><option selected="" value="rel" data-reactid=".0.0.0.1.0.1.1.2.1.0">関連度順</option><option value="created" data-reactid=".0.0.0.1.0.1.1.2.1.1">新規投稿順</option><option value="stock" data-reactid=".0.0.0.1.0.1.1.2.1.2">ストック数降順</option></select><label class="checkbox searchQuerySupport_stocked" data-reactid=".0.0.0.1.0.1.1.2.2"><input type="checkbox" name="stocked" id="stocked" value="1" class="searchQuerySupport_checkbox" data-reactid=".0.0.0.1.0.1.1.2.2.0"><label for="stocked" data-reactid=".0.0.0.1.0.1.1.2.2.1">ストックした投稿で絞り込む</label></label></div></div></div><div style="display:none;" class="incrementalSearch" data-reactid=".0.0.0.1.0.2"><div class="incrementalSearchResult-moreResults" data-reactid=".0.0.0.1.0.2.1"><input type="submit" value="もっと見る" class="incrementalSearchResult-moreResults_submit" data-reactid=".0.0.0.1.0.2.1.0"></div></div></div></form>
+        -->
+        <!--
+        <input type="search" name="example2" size="30" maxlength="30" autofocus autocomplete="on" placeholder="キーワードを入力">
+        -->
+        <div class="input-group">
             <style>
-                #document .container {
-                    margin: 0px;
-                    padding-top: 1%;
-                    padding-left: 1%;
-                    padding-right: 1%;
-                }
-            </style>
-            <!--
-            <form action="/search" method="get" class="navbar-form navbar-left searchForm" data-reactid=".0.0.0.1"><div class="searchForm_queryWrapper" data-reactid=".0.0.0.1.0"><input placeholder="キーワードを入力" autocomplete="off" name="q" class="form-control searchForm_query" value="" data-reactid=".0.0.0.1.0.0"><div style="display:none;" class="searchQuerySupport" data-reactid=".0.0.0.1.0.1"><div class="searchQuerySupport_userSearch" data-reactid=".0.0.0.1.0.1.0"><label class="searchQuerySupport_label" data-reactid=".0.0.0.1.0.1.0.0">ユーザーを指定</label><input placeholder="例) qiitan" class="searchQuerySupport_input" value="" data-reactid=".0.0.0.1.0.1.0.1"></div><div class="searchQuerySupport_tagSearch" data-reactid=".0.0.0.1.0.1.1"><label class="searchQuerySupport_label" data-reactid=".0.0.0.1.0.1.1.0">タグを指定</label><input placeholder="例) Ruby フレームワーク" class="searchQuerySupport_input" value="" data-reactid=".0.0.0.1.0.1.1.1"><div class="searchQuerySupport_sort" data-reactid=".0.0.0.1.0.1.1.2"><div class="searchQuerySupport_sortLabel" data-reactid=".0.0.0.1.0.1.1.2.0">ソート</div><select name="sort" data-reactid=".0.0.0.1.0.1.1.2.1"><option selected="" value="rel" data-reactid=".0.0.0.1.0.1.1.2.1.0">関連度順</option><option value="created" data-reactid=".0.0.0.1.0.1.1.2.1.1">新規投稿順</option><option value="stock" data-reactid=".0.0.0.1.0.1.1.2.1.2">ストック数降順</option></select><label class="checkbox searchQuerySupport_stocked" data-reactid=".0.0.0.1.0.1.1.2.2"><input type="checkbox" name="stocked" id="stocked" value="1" class="searchQuerySupport_checkbox" data-reactid=".0.0.0.1.0.1.1.2.2.0"><label for="stocked" data-reactid=".0.0.0.1.0.1.1.2.2.1">ストックした投稿で絞り込む</label></label></div></div></div><div style="display:none;" class="incrementalSearch" data-reactid=".0.0.0.1.0.2"><div class="incrementalSearchResult-moreResults" data-reactid=".0.0.0.1.0.2.1"><input type="submit" value="もっと見る" class="incrementalSearchResult-moreResults_submit" data-reactid=".0.0.0.1.0.2.1.0"></div></div></div></form>
-            -->
-            <!--
-            <input type="search" name="example2" size="30" maxlength="30" autofocus autocomplete="on" placeholder="キーワードを入力">
-            -->
-            <div class="input-group">
-                <style>
-                    #document .container .input-group {
-                        margin: 0px;
-                        padding-top: 1%;
-                        padding-left: 1%;
-                        padding-right: 1%;
-                        width: 100%;
-                    }
-                </style>
-                <input type="text" class="form-control">
+            #document .container .input-group{
+                margin: 0px;
+                padding-top: 1%;
+                padding-left: 1%;
+                padding-right: 1%;
+                width: 100%;
+            }
+        </style>
+            <input type="text" class="form-control">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">検索</button>
             </span>
-            </div>
-        </div>
-        <div class="container">
-            <style>
-                #document .container {
-                    margin: 0px;
-                    padding: 1%;
-                    width: 100%;
-                }
-            </style>
-            <div class="jumbotron">
-                <style>
-                    #document .container .jumbotron {
-                        margin: 0px;
-                        padding: 0px;
-                    }
-                </style>
-                <!-- 全員の投稿表示領域 -->
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <style>
-                        #document .container .jumbotron .panel-default {
-                            margin: 0px;
-                            padding: 0px;
-                            width: 100%;
-                        }
-                    </style>
-                    <div class="panel-heading">
-                        <h3 class="panel-title">投稿一覧</h3>
-                    </div>
-                    <!-- List group -->
-                    <ul class="list-group">
-                        <!--
-                        <a class="list-group-item list-group-item-success" href="#">メニューＡ</a>
-                        <a class="list-group-item list-group-item-info" href="#">メニューＢ</a>
-                        <a class="list-group-item list-group-item-warning" href="#">メニューＣ</a>
-                        <a class="list-group-item list-group-item-danger" href="#">メニューＤ</a>
-                        -->
-                        <style>
-                            #document .container .jumbotron .panel .list-group .list-group-item .text {
-                                height: 50px;
-                            }
-                        </style>
-                        <li class="list-group-item">
-                            <div class="container-fluid">
-                                <p class="small text-muted reply-to">User Name</p>
-                                <p class="text">text: あのイーハトーヴォの すきとおった風、
-                                    夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
-                                <p class="small">created_at: 2015/9/30 17:49:12</p>
-                                <!--
-                                <p class="text-right">
-                                    <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                                        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>返信する
-                                    </button>
-                                    <a href="">
-                                        <button type="submit" class="btn btn-danger" name="delete_post">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除する
-                                        </button>
-                                    </a>
-                                </p>
-                                -->
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="container-fluid">
-                                <p class="small text-muted reply-to">User Name</p>
-                                <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
-                                <p class="small">created_at: 2015/9/30 17:49:11</p>
-                                <!--
-                                <p class="text-right">
-                                    <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                                        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>返信する
-                                    </button>
-                                    <a href="">
-                                        <button type="submit" class="btn btn-danger" name="delete_post">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除する
-                                        </button>
-                                    </a>
-                                </p>
-                                -->
-                            </div>
-                        </li>
-                        <li class="list-group-item">
-                            <div class="container-fluid">
-                                <p class="small text-muted reply-to">User Name</p>
-                                <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
-                                <p class="small">created_at: 2015/9/30 17:49:10</p>
-                                <!--
-                                <p class="text-right">
-                                    <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
-                                        <span class="glyphicon glyphicon-send" aria-hidden="true"></span>返信する
-                                    </button>
-                                    <a href="">
-                                        <button type="submit" class="btn btn-danger" name="delete_post">
-                                            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除する
-                                        </button>
-                                    </a>
-                                </p>
-                                -->
-                            </div>
-                        </li>
-                        <!--
-                        <li class="list-group-item">
-                            <div class="container-fluid">
-                                <p class="small text-muted reply-to">ユーザーネームの表示</p>
-                                <p>テキストの表示</p>
-                                <p class="small">created_at: 2015/9/30 17:49:11 日付の表示</p>
-                            </div>
-                        </li>
-                        -->
-                    </ul>
-                </div>
-            </div>
         </div>
     </div>
-
-    <!--サイドバー-->
-    <div id="sidebar">
+    <div class="container">
         <style>
-            #sidebar {
-                float: left;
-                width: 20%;
-                padding-top: 1%;
+            #document .container{
+                margin: 0px;
+                padding: 1%;
+                width: 100%;
             }
         </style>
-        <div class="container">
+        <div class="jumbotron">
             <style>
-                #sidebar .container {
+                #document .container .jumbotron {
+                    margin: 0px;
+                    padding: 0px;
+                }
+            </style>
+            <!-- 全員の投稿表示領域 -->
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <style>
+                    #document .container .jumbotron .panel-default{
+                        margin: 0px;
+                        padding: 0px;
+                        width: 100%;
+                    }
+                </style>
+                <div class="panel-heading">
+                    <h3 class="panel-title">投稿一覧</h3>
+                </div>
+                <!-- List group -->
+                <ul class="list-group">
+                    <!--
+                    <a class="list-group-item list-group-item-success" href="#">メニューＡ</a>
+                    <a class="list-group-item list-group-item-info" href="#">メニューＢ</a>
+                    <a class="list-group-item list-group-item-warning" href="#">メニューＣ</a>
+                    <a class="list-group-item list-group-item-danger" href="#">メニューＤ</a>
+                    -->
+                    <style>
+                        #document .container .jumbotron .panel .list-group .list-group-item .text{
+                            height: 50px;
+                        }
+                    </style>
+                    <li class="list-group-item">
+                        <div class="container-fluid">
+                            <p class="small text-muted reply-to">User Name</p>
+                            <p class="text">text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
+                            <p class="small">created_at: 2015/9/30 17:49:12</p>
+                            <!--
+                            <p class="text-right">
+                                <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
+                                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>返信する
+                                </button>
+                                <a href="">
+                                    <button type="submit" class="btn btn-danger" name="delete_post">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除する
+                                    </button>
+                                </a>
+                            </p>
+                            -->
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="container-fluid">
+                            <p class="small text-muted reply-to">User Name</p>
+                            <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
+                            <p class="small">created_at: 2015/9/30 17:49:11</p>
+                            <!--
+                            <p class="text-right">
+                                <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
+                                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>返信する
+                                </button>
+                                <a href="">
+                                    <button type="submit" class="btn btn-danger" name="delete_post">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除する
+                                    </button>
+                                </a>
+                            </p>
+                            -->
+                        </div>
+                    </li>
+                    <li class="list-group-item">
+                        <div class="container-fluid">
+                            <p class="small text-muted reply-to">User Name</p>
+                            <p>text: あのイーハトーヴォの すきとおった風、 夏でも底に冷たさをもつ青いそら、うつくしい森で飾られたモーリオ市、郊外のぎらぎらひかる草の波</p>
+                            <p class="small">created_at: 2015/9/30 17:49:10</p>
+                            <!--
+                            <p class="text-right">
+                                <button type="button" class="btn btn-primary reply-btn" data-toggle="modal" data-target="#replyModal">
+                                    <span class="glyphicon glyphicon-send" aria-hidden="true"></span>返信する
+                                </button>
+                                <a href="">
+                                    <button type="submit" class="btn btn-danger" name="delete_post">
+                                        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>削除する
+                                    </button>
+                                </a>
+                            </p>
+                            -->
+                        </div>
+                    </li>
+                    <!--
+                    <li class="list-group-item">
+                        <div class="container-fluid">
+                            <p class="small text-muted reply-to">ユーザーネームの表示</p>
+                            <p>テキストの表示</p>
+                            <p class="small">created_at: 2015/9/30 17:49:11 日付の表示</p>
+                        </div>
+                    </li>
+                    -->
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--サイドバー-->
+<div id="sidebar">
+    <style>
+        #sidebar{
+            float: left;
+            width: 20%;
+            padding-top: 1%;
+        }
+    </style>
+    <div class="container">
+        <style>
+        #sidebar .container{
+            width: 100%;
+        }
+    </style>
+        <div id="profile">
+            <div class="container">
+                <style>
+                #sidebar .container #profile .container{
                     width: 100%;
                 }
             </style>
-            <div id="profile">
-                <div class="container">
-                    <style>
-                        #sidebar .container #profile .container {
-                            width: 100%;
-                        }
-                    </style>
-                    <div class="panel panel-default">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">ユーザ情報</h3>
-                        </div>
-                        <div class="panel-body">
-                            <h4 class="leader">Hiro</h4>
-                            <p>Doshisha Univ.</p>
-                        </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">ユーザ情報</h3>
+                    </div>
+                    <div class="panel-body">
+                        <h4 class="leader">Hiro</h4>
+                        <p>Doshisha Univ.</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+=======
+<div class="container">
+	<div class="jumbotron">
+    <h1>めいんぺーじ</h1>
+	</div>
+>>>>>>> 94a668b60aa132e8f27cf6e10c16a6b59941232c
+</div>
 
 {% endblock %}
