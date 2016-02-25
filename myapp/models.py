@@ -1,6 +1,5 @@
 from flask.ext.login import UserMixin
 from werkzeug.security import generate_password_hash, check_password_hash
-from datetime import datetime
 from myapp import db
 from . import login_manager
 
@@ -79,16 +78,37 @@ class Post(db.Model):
     id = db.Column(db.Integer, primary_key=True)  # :POST ID, PRIMARY
 
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    post_id = db.relationship('Comment', backref='comment')
+
     title = db.Column(db.String(512))
     tag = db.Column(db.String(32))
     body = db.Column(db.Text)
     published_on = db.Column(db.DateTime)
 
-    def __init__(self,title,tag,body,author_id):
+    def __init__(self,title,tag,body,author_id, published_on):
         self.author_id = author_id
         self.title = title
         self.tag = tag
         self.body = body
-        self.published_on = datetime.now()
+        self.published_on = published_on
 
 
+class Comment(db.Model):
+    """
+    本文 コメント
+    """
+    __tablename__ = 'comment'
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+
+
+    poster_name = db.Column(db.String())
+    post_on = db.Column(db.DateTime)
+    cbody = db.Column(db.Text)
+
+    def __init__(self,poster_name,post_on,cbody):
+        self.poster_name = poster_name
+        self.post_on = post_on
+        self.cbody = cbody
