@@ -3,31 +3,8 @@
 {% block main %}
 
 <div id="document">
-    <style>
-        #document{
-            float: left;
-            width: 80%;
-        }
-    </style>
     <div class="container">
-        <style>
-            #document .container{
-                margin: 0px;
-                padding-top: 1%;
-                padding-left: 1%;
-                padding-right: 1%;
-            }
-        </style>
         <div class="input-group">
-            <style>
-            #document .container .input-group{
-                margin: 0px;
-                padding-top: 1%;
-                padding-left: 1%;
-                padding-right: 1%;
-                width: 100%;
-            }
-        </style>
             <input type="text" class="form-control">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
@@ -37,30 +14,10 @@
         </div>
     </div>
     <div class="container">
-        <style>
-            #document .container{
-                margin: 0px;
-                padding: 1%;
-                width: 100%;
-            }
-        </style>
         <div class="jumbotron">
-            <style>
-                #document .container .jumbotron {
-                    margin: 0px;
-                    padding: 0px;
-                }
-            </style>
             <!-- 全員の投稿表示領域 -->
             <div class="panel panel-default">
                 <!-- Default panel contents -->
-                <style>
-                    #document .container .jumbotron .panel-default{
-                        margin: 0px;
-                        padding: 0px;
-                        width: 100%;
-                    }
-                </style>
                 <div class="panel-heading">
                     <h3 class="panel-title">投稿一覧</h3>
                 </div>
@@ -72,34 +29,6 @@
                     <a class="list-group-item list-group-item-warning" href="#">メニューＣ</a>
                     <a class="list-group-item list-group-item-danger" href="#">メニューＤ</a>
                     -->
-                    <style>
-                        #document .container .jumbotron .panel .list-group .list-group-item .text{
-                            height: 50px;
-                        }
-                    </style>
-
-                    <li class="list-group-item">
-                        <div class="container-fluid">
-                            <p class="small text-muted reply-to">User Name</p>
-                            <p class="title">title1</p>
-                            <p class="small">created_at: 2015/9/30 17:49:12</p>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="container-fluid">
-                            <p class="small text-muted reply-to">User Name</p>
-                            <p class="title">title2</p>
-                            <p class="small">created_at: 2015/9/30 17:49:11</p>
-                        </div>
-                    </li>
-                    <li class="list-group-item">
-                        <div class="container-fluid">
-                            <p class="small text-muted reply-to">User Name</p>
-                            <p class="title">title3</p>
-                            <p class="small">created_at: 2015/9/30 17:49:10</p>
-                        </div>
-                    </li>
-
                     {% for post in posts %}
                         <li class="list-group-item">
                             <div class="container-fluid">
@@ -121,26 +50,9 @@
 
 <!--サイドバー-->
 <div id="sidebar">
-    <style>
-        #sidebar{
-            float: left;
-            width: 20%;
-            padding-top: 1%;
-        }
-    </style>
     <div class="container">
-        <style>
-        #sidebar .container{
-            width: 100%;
-        }
-        </style>
         <div id="profile">
             <div class="container">
-                <style>
-                #sidebar .container #profile .container{
-                    width: 100%;
-                }
-            </style>
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h3 class="panel-title"><span class="glyphicon glyphicon-user"> ユーザ情報</span></h3>
@@ -162,11 +74,6 @@
 
         <div id="taglist">
             <div class="container">
-                <style>
-                #sidebar .container{
-                 width: 100%;
-             }
-             </style>
                 <div class="list-group">
                     <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag"> HTML</span></a>
                     <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag"> CSS</span></a>
