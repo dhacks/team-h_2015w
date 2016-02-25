@@ -7,8 +7,10 @@ from myapp.models import User, Post, Comment
 from datetime import datetime
 
 @app.route('/')
-def main():
-    return render_template('main.html')
+def main(post_list):
+    posts = Post.query.order_by(Post.published_on)
+
+    return render_template('main.html',post_list = post)
 
 
 @app.route('/signup', methods=('GET', 'POST'))
