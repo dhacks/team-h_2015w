@@ -8,7 +8,7 @@
             <input type="text" class="form-control">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
-                    <span class="glyphicon glyphicon-search"> 検索</span>
+                    <span class="glyphicon glyphicon-search" aria-hidden="true"> 検索</span>
                 </button>
             </span>
         </div>
@@ -31,14 +31,11 @@
                     -->
                     {% for post in posts %}
                         <li class="list-group-item">
-                            <div class="container-fluid">
-                                <p class="small text-muted reply-to">{{ post.author_id }}</p>
-
-                                <a href="/{{post.id}}">{{ post.title }}</a>
-                                <!-- うえ、文字サイズ変更お願いします-->
-
-                                <span class="small">created_at:{{ post.published_on }}</span>
-                                <span class="small glyphicon glyphicon-tag">{{ post.tag }}</span>
+                            <div class="media">
+                                <div class="media-body">
+                                    <h2 class="media-heading"><a href="/{{post.id}}">{{ post.title }}</a></h2>
+                                    by {{ post.author_id }}<br><h3><span class="small glyphicon glyphicon-tag" aria-hidden="true">{{ post.tag }}</span></h3><span class="small">created_at:{{ post.published_on }}</span>
+                                </div>
                             </div>
                         </li>
                     {% endfor %}
@@ -55,7 +52,7 @@
             <div class="container">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-user"> ユーザ情報</span></h3>
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザ情報</span></h3>
                     </div>
                     {% if current_user.is_authenticated() %}
                         <div class="panel-body">
@@ -75,9 +72,9 @@
         <div id="taglist">
             <div class="container">
                 <div class="list-group">
-                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag"> HTML</span></a>
-                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag"> CSS</span></a>
-                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag"> JavaScript</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> HTML</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> CSS</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> JavaScript</span></a>
                 </div>
             </div>
         </div>
