@@ -15,6 +15,7 @@ class Login(Form):
 
     email = StringField(validators=[Required(),Email()])
     pswd = PasswordField()
+    submit = SubmitField('submit')
 
 class Post_Form(Form):
     title = StringField('title',validators=[Required()])
