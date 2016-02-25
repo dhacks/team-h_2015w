@@ -1,16 +1,18 @@
-from myapp import app, db
+from datetime import datetime
+
 from flask import render_template, flash, url_for, redirect, request
 from flask.ext.login import login_user, logout_user, login_required, current_user
+
+from myapp import app, db
 from myapp.forms import Login, Signup, Post_Form, Comment_Form
 from myapp.models import User, Post, Comment
 
-from datetime import datetime
 
 @app.route('/')
-def main():
+def index():
     posts = Post.query.order_by(Post.published_on)
 
-    return render_template('main.html',posts = posts)
+    return render_template('main.html', posts=posts)
 
 
 @app.route('/signup', methods=('GET', 'POST'))
@@ -22,7 +24,7 @@ def signup():
         db.session.add(user)
         db.session.commit()
         flash('Thanks, you are registered')
-        return redirect(url_for('main'))
+        return redirect(url_for('index'))
     return render_template('register.html', form=form)
 
 
@@ -34,36 +36,37 @@ def login():
         if user.verify_password(form.pswd.data):
             login_user(user)
             print('login success!')
-            return redirect(url_for('main'))
+            return redirect(url_for('index'))
         else:
             print('login failed ><')
             return redirect(url_for('login'))
 
-    return render_template('login.html',form=form)
+    return render_template('login.html', form=form)
 
 
 @app.route('/logout')
 def logout():
     logout_user()
-    return redirect(url_for('main'))
+    return redirect(url_for('index'))
 
-@app.route('/post',methods=('GET','POST'))
+
+@app.route('/post', methods=('GET', 'POST'))
 @login_required
 def post():
     form = Post_Form()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, author_id= current_user.get_id() ,tag = form.tag.data,
+        post = Post(title=form.title.data, author_id=current_user.get_id(), tag=form.tag.data,
                     body=form.body.data, published_on=datetime.now())
         db.session.add(post)
         db.session.commit()
         print("post success")
         flash('Successfully posted')
-        return redirect(url_for('main'))
+        return redirect(url_for('index'))
     return render_template('post.html', form=form)
 
 
-@app.route('/post_comment',methods=('GET','POST'))
-#@login_required
+@app.route('/post_comment', methods=('GET', 'POST'))
+# @login_required
 def post_comment():
     """
     本文表示、個別ページ post_idから対応するPOSTのデータをDBからとって表示
@@ -71,7 +74,7 @@ def post_comment():
     """
     form = Comment_Form()
     if form.validate_on_submit():
-        cmmnt = Comment(poster_name=current_user.name, post_on=datetime.now(), cbody = form.cbody.data)
+        cmmnt = Comment(poster_name=current_user.name, post_on=datetime.now(), cbody=form.cbody.data)
         db.session.add(cmmnt)
         db.session.commit()
         print("comment post succenss")
