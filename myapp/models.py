@@ -3,9 +3,10 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from myapp import db
 from . import login_manager
 
+
 @login_manager.user_loader
-def load_user(userid):
-    return User.query.filter(User.id == userid).first()
+def load_user(user_id):
+    return User.query.filter(User.id == user_id).first()
 
 
 class User(UserMixin, db.Model):
@@ -16,22 +17,16 @@ class User(UserMixin, db.Model):
     __tablename__ = 'user'
 
     id = db.Column(db.Integer, primary_key=True)  # USER ID, PRIMARY
-
     username = db.Column(db.String(64), unique=True, index=True)
     email = db.Column(db.String(64), unique=True, index=True)
-
     year = db.Column(db.Integer)
-
-    user_id = db.relationship('Post', backref='user')
-
     password_hash = db.Column(db.String(128))
 
-    def __init__(self,username,email,password):#,year):
+    def __init__(self, username, email, password):  # ,year):
         self.username = username
         self.email = email
         self.year = 1
         self.password = password
-
 
     @property
     def password(self):
@@ -51,7 +46,8 @@ class User(UserMixin, db.Model):
         """
         return check_password_hash(self.password_hash, password)
 
-#    def is_active(self):
+
+# def is_active(self):
 #        """True, as all users are active."""
 #        return True
 #
@@ -68,7 +64,6 @@ class User(UserMixin, db.Model):
 #        return False
 
 
-
 class Post(db.Model):
     """
     本文記事　まわり
@@ -76,16 +71,15 @@ class Post(db.Model):
     __tablename__ = 'post'
 
     id = db.Column(db.Integer, primary_key=True)  # :POST ID, PRIMARY
-
-    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-    post_id = db.relationship('Comment', backref='comment')
-
     title = db.Column(db.String(512))
     tag = db.Column(db.String(32))
     body = db.Column(db.Text)
     published_on = db.Column(db.DateTime)
 
-    def __init__(self,title,tag,body,author_id, published_on):
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    author = db.relation('User', backref=db.backref('posts', lazy='dynamic'))
+
+    def __init__(self, title, tag, body, author_id, published_on):
         self.author_id = author_id
         self.title = title
         self.tag = tag
@@ -100,15 +94,14 @@ class Comment(db.Model):
     __tablename__ = 'comment'
 
     id = db.Column(db.Integer, primary_key=True)
+    author_name = db.Column(db.String())
+    post_on = db.Column(db.DateTime)
+    body = db.Column(db.Text)
 
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+    post = db.relation('Post', backref=db.backref('comments', lazy='dynamic'))
 
-
-    poster_name = db.Column(db.String())
-    post_on = db.Column(db.DateTime)
-    cbody = db.Column(db.Text)
-
-    def __init__(self,poster_name,post_on,cbody):
-        self.poster_name = poster_name
+    def __init__(self, author_name, post_on, body):
+        self.author_name = author_name
         self.post_on = post_on
-        self.cbody = cbody
+        self.body = body
