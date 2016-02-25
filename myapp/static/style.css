@@ -1,12 +1,9 @@
 
-.navbar .container .navbar_header .button .ul .li{
-    float: left;
-}
 
-#icon {
-  background: url(/static/imgs/logo2.png) no-repeat left center;
-  background-size: contain;
-  height: 50px;
+.navbar a {
+        padding: 0px;
+        margin: 0px;
+    }
 }
 
 #footer {
@@ -22,8 +19,8 @@
 #document{
     float: left;
     padding-top: 1%;
-    padding-left: 1%;
-    padding-right: 1%;
+    padding-left: 2%;
+    padding-right: 2%;
     width: 80%;
 }
 
@@ -53,7 +50,7 @@
     float: left;
     margin: 0px;
     padding-top: 1%;
-    padding-right: 1%;
+    padding-right: 2%;
     width: 20%;
 }
 
@@ -62,5 +59,3 @@
     margin: 0px;
     padding: 0px;
 }
-
-#
