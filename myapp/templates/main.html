@@ -54,7 +54,7 @@
                     <div class="panel-heading">
                         <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザ情報</span></h3>
                     </div>
-                    {% if current_user.is_authenticated() %}
+                    {% if current_user.is_authenticated %}
                         <div class="panel-body">
                         <h4 class="leader">{{ current_user.username }}</h4>
                         <p>Doshisha Univ.</p>
