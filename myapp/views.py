@@ -1,6 +1,6 @@
 from myapp import app, db
 from flask import render_template, flash, url_for, redirect, request
-from flask.ext.login import login_user, logout_user, login_required
+from flask.ext.login import login_user, logout_user, login_required, current_user
 from myapp.forms import Login, Signup, Post_Form
 from myapp.models import User, Post
 
@@ -49,7 +49,7 @@ def logout():
 def post():
     form = Post_Form()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, author_id= current_user.get_id ,form.tag.data, body=form.body.data)
+        post = Post(title=form.title.data, author_id= current_user.get_id ,tag = form.tag.data, body=form.body.data)
         db.session.add(post)
         db.session.commit()
         print("post success")
