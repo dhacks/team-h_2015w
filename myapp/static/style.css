@@ -1,4 +1,14 @@
 
+.navbar .container .navbar_header .button .ul .li{
+    float: left;
+}
+
+#icon {
+  background: url(/static/imgs/logo2.png) no-repeat left center;
+  background-size: contain;
+  height: 50px;
+}
+
 #footer {
     clear: both;
     width: 100%;
@@ -33,6 +43,12 @@
     padding: 0px;
 }
 
+#document .container .jumbotron .media h3{
+    margin: 0px;
+}
+
+
+
 #sidebar{
     float: left;
     margin: 0px;
@@ -46,3 +62,5 @@
     margin: 0px;
     padding: 0px;
 }
+
+#

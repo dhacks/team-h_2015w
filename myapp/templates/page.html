@@ -1,10 +1,80 @@
 {% extends "base.html" %}
 
 {% block main %}
+<div id="document">
+    <div class="container">
+        <div class="jumbotron">
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h3 class="panel-title">投稿内容</h3>
+                </div>
+                <h2>Title:{{ page.title }}</h2>
+                <p>Text:{{ page.body }}</p>
+                <p class="text-right small">
+                    <button>
+                        <span class="glyphicon glyphicon-share-alt" href="{{ url_for('post_comment') }}" aria-hidden="true">返信する</span>
+                    </button>
+                </p>
+            </div>
 
-    title:{{page.title}}
+            <div class="panel panel-default">
+                <!-- Default panel contents -->
+                <div class="panel-heading">
+                    <h3 class="panel-title">返信一覧</h3>
+                </div>
+                <ul>
+                    {% for comment in comments %}
+                        <!-- 投稿に関する返信を全て表示 -->
+                        <!-- if post_id == comment_id みたいな -->
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="media-heading">{{ comment.poster_name }}</h2>
+                                        <span class="small">created_at:{{ comment.post_on }}</span><br><p>Text:{{ comment.cbody }}</p>
+                                    </div>
+                                </div>
+                            </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
 
-    body:{{ page.body }}
+    <!--サイドバー-->
+<div id="sidebar">
+    <div class="container">
+        <div id="profile">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザ情報</span></h3>
+                    </div>
+                    {% if current_user.is_authenticated() %}
+                        <div class="panel-body">
+                        <h4 class="leader">{{ current_user.username }}</h4>
+                        <p>Doshisha Univ.</p>
+                        </div>
+                    {% else %}
+                        <div class="panel-body">
+                            <h4 class="leader">Hello,Stranger</h4>
+                            <p>新規登録は<a href="{{ url_for('signup') }}">こちら</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
-
+        <div id="taglist">
+            <div class="container">
+                <div class="list-group">
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> HTML</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> CSS</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> JavaScript</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}

@@ -2,18 +2,59 @@
 
 
 {% block main %}
+<div id="document">
+    <div class="container">
+        <form method="POST">
+        {{ form.csrf_token }}
+            <div class="jumbotron">
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        <h3 class="panel-title">投稿内容</h3>
+                    </div>
+                    <p>{{ form.title.label }} :<br> {{ form.title }}</p>
+                    <p>{{ form.body.label }} :<br> {{ form.body }}</p>
+                    <p>{{ form.tag.label }} :<br> {{ form.tag }}</p>
+                    <p class="text-right">{{ form.submit }}</p>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
 
-    <h1>Post page.</h1>
+        <!--サイドバー-->
+<div id="sidebar">
+    <div class="container">
+        <div id="profile">
+            <div class="container">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザ情報</span></h3>
+                    </div>
+                    {% if current_user.is_authenticated() %}
+                        <div class="panel-body">
+                        <h4 class="leader">{{ current_user.username }}</h4>
+                        <p>Doshisha Univ.</p>
+                        </div>
+                    {% else %}
+                        <div class="panel-body">
+                            <h4 class="leader">Hello,Stranger</h4>
+                            <p>新規登録は<a href="{{ url_for('signup') }}">こちら</a></p>
+                        </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
-    <form method="POST">
-    {{ form.csrf_token }}
-        {{ form.title.label }} : {{ form.title }}
-
-        {{ form.tag.label }} : {{ form.tag }}
-
-        {{ form.body.label }} : {{ form.body }}
-
-        {{ form.submit }}
-    </form>
-
+        <div id="taglist">
+            <div class="container">
+                <div class="list-group">
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> HTML</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> CSS</span></a>
+                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> JavaScript</span></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
