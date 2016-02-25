@@ -92,7 +92,7 @@ def post_comment():
     """
     form = Comment_Form()
     if form.validate_on_submit():
-        cmmnt = Comment(poster_name=current_user.name, post_on=datetime.now(), cbody=form.cbody.data)
+        cmmnt = Comment(author_name=current_user.name, post_on=datetime.now(), body=form.cbody.data)
         db.session.add(cmmnt)
         db.session.commit()
         print("comment post succenss")
