@@ -12,7 +12,6 @@
     {% block extrastyle %}{% endblock %}
 </head>
 <body>
-
 <!--ヘッダー-->
 <div class="navbar navbar-default navbar-static-top">
     <div class="container">
@@ -21,34 +20,55 @@
                     class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span
                     class="icon-bar"></span></button>
             <a class="navbar-brand" href="index.html"><span>teamH</span></a></div>
-
-        {% if current_user.is_authenticated() %}
-            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Logout</a></li>
-                </ul>
-            </div>
-        {% else %}
-            <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                <ul class="nav navbar-nav navbar-right">
-                    <li class="active"><a href="index.html">Login</a></li>
-                </ul>
-            </div>
-        {% endif %}
+        <div class="collapse navbar-collapse" id="navbar-ex-collapse">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="active"><a href="main.html">Home</a></li>
+                <li><a href="/post">投稿</a></li>
+                <li><a href="">更新</a></li>
+                <li><a href="/login">ログイン</a></li>
+                <!-- login button作る
+                     % if logged in %}
+                    !logout button!
+                % else %}
+                    !login button!
+                % endif}
+                みたいな,,,
+                -->
+            </ul>
+        </div>
     </div>
 </div>
 
-
+<!--メイン-->
 <div>{% block main %}{% endblock %}</div>
 
-
-
-
+<!--フッター-->
+<div id="footer">
+    <style>
+        #footer{
+            clear: both;
+            width: 100%;
+        }
+    </style>
+    <div class="container">
+        <style>
+        #footer .container{
+            width: 100%;
+        }
+    </style>
+        <p class="copyright"><small>copyright &copy; Hello World All Rights Reserved. </small></p>
+    </div>
+</div>
 
 {% block js %}
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
 <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <!--
+<script type="text/javascript" src="http://pythonhosted.org/Flask-Bootstrap/#"></script>
+<script type="text/javascript" src="http://a2c.bitbucket.org/flask/index.html"></script>
+<script type="text/javascript" src="http://flask.pocoo.org/"></script>-->
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 <script type="text/x-mathjax-config">
 		MathJax.Hub.Config({
 		"HTML-CSS": {

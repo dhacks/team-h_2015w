@@ -45,11 +45,11 @@ def logout():
     return redirect(url_for('main'))
 
 @app.route('/post',methods=('GET','POST'))
-#@login_required()
+@login_required
 def post():
     form = Post_Form()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, tag=form.tag.data, body=form.body.data)
+        post = Post(title=form.title.data, author_id= current_user.get_id ,form.tag.data, body=form.body.data)
         db.session.add(post)
         db.session.commit()
         print("post success")

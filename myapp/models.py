@@ -84,8 +84,8 @@ class Post(db.Model):
     body = db.Column(db.Text)
     published_on = db.Column(db.DateTime)
 
-    def __init__(self,title,tag,body):
-        self.author_id = 0
+    def __init__(self,title,tag,body,author_id):
+        self.author_id = author_id
         self.title = title
         self.tag = tag
         self.body = body
