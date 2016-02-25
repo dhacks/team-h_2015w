@@ -1,9 +1,13 @@
-
+.navbar-brand {
+    background: url("imgs/logo2.png") no-repeat center;
+    background-size: contain;
+    height: 50px;
+    width: 90px;
+}
 
 .navbar a {
-        padding: 0px;
-        margin: 0px;
-    }
+    padding: 0;
+    margin: 0;
 }
 
 #footer {
@@ -16,7 +20,7 @@
     width: 100%;
 }
 
-#document{
+#document {
     float: left;
     padding-top: 1%;
     padding-left: 2%;
@@ -24,38 +28,36 @@
     width: 80%;
 }
 
-#document .container{
-    margin: 0px;
-    padding: 0px;
+#document .container {
+    margin: 0;
+    padding: 0;
     width: 100%;
 }
 
-#document .container .input-group{
-    margin: 0px;
+#document .container .input-group {
+    margin: 0;
     padding-bottom: 1%;
     width: 100%;
 }
 
 #document .container .jumbotron {
-    padding: 0px;
+    padding: 0;
 }
 
-#document .container .jumbotron .media h3{
-    margin: 0px;
+#document .container .jumbotron .media h3 {
+    margin: 0;
 }
 
-
-
-#sidebar{
+#sidebar {
     float: left;
-    margin: 0px;
+    margin: 0;
     padding-top: 1%;
     padding-right: 2%;
     width: 20%;
 }
 
-#sidebar .container{
+#sidebar .container {
     width: 100%;
-    margin: 0px;
-    padding: 0px;
+    margin: 0;
+    padding: 0;
 }
