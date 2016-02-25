@@ -28,3 +28,7 @@ class Comment_Form(Form):
 
     cbody = TextAreaField('comment body', validators=[Required()])
 
+class Search_Form(Form):
+
+    tag = StringField('tag')
+    submit = SubmitField('検索')

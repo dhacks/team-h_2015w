@@ -4,16 +4,22 @@ from flask import render_template, flash, url_for, redirect, request
 from flask.ext.login import login_user, logout_user, login_required, current_user
 
 from myapp import app, db
-from myapp.forms import Login, Signup, Post_Form, Comment_Form
+from myapp.forms import Login, Signup, Post_Form, Comment_Form, Search_Form
 from myapp.models import User, Post, Comment
 
 
-@app.route('/')
+@app.route('/',methods=('GET', 'POST'))
 def index():
     posts = Post.query.order_by(Post.published_on)
+    form = Search_Form()
 
-    return render_template('main.html', posts=posts)
+    if request.method == 'POST':
+        tag = form.tag.data
+        print(tag)
+        posts = Post.query.filter_by(tag=tag)#.order_by(Post.published_on)
+        return render_template('main.html',form=form,posts=posts)
 
+    return render_template('main.html', posts=posts, form=form)
 
 @app.route('/<int:postid>')
 def page(postid):
