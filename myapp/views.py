@@ -49,7 +49,7 @@ def logout():
 def post():
     form = Post_Form()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, author_id= current_user.get_id ,tag = form.tag.data, body=form.body.data)
+        post = Post(title=form.title.data, author_id= current_user.get_id() ,tag = form.tag.data, body=form.body.data)
         db.session.add(post)
         db.session.commit()
         print("post success")
