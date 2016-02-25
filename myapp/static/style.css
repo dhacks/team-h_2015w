@@ -1,0 +1,48 @@
+
+#footer {
+    clear: both;
+    width: 100%;
+    text-align: right;
+}
+
+#footer .container {
+    width: 100%;
+}
+
+#document{
+    float: left;
+    padding-top: 1%;
+    padding-left: 1%;
+    padding-right: 1%;
+    width: 80%;
+}
+
+#document .container{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+}
+
+#document .container .input-group{
+    margin: 0px;
+    padding-bottom: 1%;
+    width: 100%;
+}
+
+#document .container .jumbotron {
+    padding: 0px;
+}
+
+#sidebar{
+    float: left;
+    margin: 0px;
+    padding-top: 1%;
+    padding-right: 1%;
+    width: 20%;
+}
+
+#sidebar .container{
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
+}
