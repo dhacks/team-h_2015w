@@ -22,3 +22,9 @@ class Post_Form(Form):
     tag =  StringField('tag')
     body = TextAreaField('body',validators=[Required()])
     submit = SubmitField('submit')
+
+
+class Comment_Form(Form):
+
+    cbody = TextAreaField('comment body', validators=[Required()])
+

@@ -1,9 +1,10 @@
 from myapp import app, db
 from flask import render_template, flash, url_for, redirect, request
 from flask.ext.login import login_user, logout_user, login_required, current_user
-from myapp.forms import Login, Signup, Post_Form
-from myapp.models import User, Post
+from myapp.forms import Login, Signup, Post_Form, Comment_Form
+from myapp.models import User, Post, Comment
 
+from datetime import datetime
 
 @app.route('/')
 def main():
@@ -49,7 +50,8 @@ def logout():
 def post():
     form = Post_Form()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, author_id= current_user.get_id() ,tag = form.tag.data, body=form.body.data)
+        post = Post(title=form.title.data, author_id= current_user.get_id() ,tag = form.tag.data,
+                    body=form.body.data, published_on=datetime.now())
         db.session.add(post)
         db.session.commit()
         print("post success")
@@ -57,8 +59,20 @@ def post():
         return redirect(url_for('main'))
     return render_template('post.html', form=form)
 
-@app.route('/hoge')
-@login_required
-def hoge():
-    #login check
-    return 'You are logged in!'
+
+@app.route('/post_comment',methods=('GET','POST'))
+#@login_required
+def post_comment():
+    """
+    本文表示、個別ページ post_idから対応するPOSTのデータをDBからとって表示
+    本文したにコメント表示
+    """
+    form = Comment_Form()
+    if form.validate_on_submit():
+        cmmnt = Comment(poster_name=current_user.name, post_on=datetime.now(), cbody = form.cbody.data)
+        db.session.add(cmmnt)
+        db.session.commit()
+        print("comment post succenss")
+        return redirect(url_for('post_main'))
+
+    return render_template('editor.html', form=form)
