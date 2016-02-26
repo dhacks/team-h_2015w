@@ -83,9 +83,9 @@ def post():
     return render_template('post.html', form=form)
 
 
-@app.route('/post_comment', methods=('GET', 'POST'))
+@app.route('/post_comment/<int:postid>', methods=('GET', 'POST'))
 # @login_required
-def post_comment():
+def post_comment(postid):
     """
     本文表示、個別ページ post_idから対応するPOSTのデータをDBからとって表示
     本文したにコメント表示
