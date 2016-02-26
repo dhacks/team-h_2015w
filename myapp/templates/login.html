@@ -1,43 +1,20 @@
 {% extends "base.html" %}
-
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block main %}
 
-<form method="POST">
-
-{{ form.csrf_token }}
 <div class="section">
     <div class="container">
         <div align="center">
             <img src="/static/imgs/logo.png">
         </div>
         <div class="row text-center">
-            <div class="col-md-12">
-                <form class="form-horizontal" role="form">
-                    <div class="form-group">
-                        <div class="col-sm-2"><label for="inputEmail3" class="control-label">Email</label></div>
-                        <div class="col-sm-10">{{ form.email }}</div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-2"><label for="inputPassword3" class="control-label">Password</label></div>
-                        <div class="col-sm-10">{{ form.pswd }}</div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            <div class="checkbox"><label><input type="checkbox"> Remember me </label></div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
-                            {{ form.submit }}
-                        </div>
-                    </div>
-                </form>
+            <div class="col-md-6 col-md-offset-3">
+                {{ wtf.quick_form(form, form_type="basic") }}
                 <p>新規登録は<a href="{{ url_for('signup') }}">こちら</a></p>
             </div>
         </div>
     </div>
 </div>
-</form>
 
 {% endblock %}

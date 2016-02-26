@@ -1,30 +1,31 @@
 from flask_wtf import Form
 from wtforms import StringField, PasswordField, TextAreaField, SubmitField
-from wtforms.validators import DataRequired, Email, EqualTo
+from wtforms.validators import InputRequired, Email, EqualTo
 
 
 class SignupForm(Form):
-    username = StringField('Name', validators=[DataRequired()])
-    email = StringField('Email', validators=[DataRequired(), Email()])
-    password = PasswordField('Create a password', )
-    password_confirm = PasswordField('Confirm your password', validators=[EqualTo(password)])
+    username = StringField('Name', validators=[InputRequired()])
+    email = StringField('Email', validators=[InputRequired(), Email()])
+    password = PasswordField('Password')
+    password_confirm = PasswordField('Confirm Password', validators=[EqualTo('password')])
+    submit = SubmitField('Signup')
 
 
 class LoginForm(Form):
-    email = StringField(validators=[DataRequired(), Email()])
-    password = PasswordField()
-    submit = SubmitField('submit')
+    email = StringField('Email', validators=[InputRequired(), Email()])
+    password = PasswordField('Password')
+    submit = SubmitField('Login')
 
 
 class PostForm(Form):
-    title = StringField('title', validators=[DataRequired()])
-    tag = StringField('tag')
-    body = TextAreaField('body', validators=[DataRequired()])
-    submit = SubmitField('submit')
+    title = StringField('Title', validators=[InputRequired()])
+    tag = StringField('Tag')
+    body = TextAreaField('Body', validators=[InputRequired()])
+    submit = SubmitField('Post')
 
 
 class CommentForm(Form):
-    body = TextAreaField('comment body', validators=[DataRequired()])
+    body = TextAreaField('comment body', validators=[InputRequired()])
 
 
 class SearchForm(Form):
