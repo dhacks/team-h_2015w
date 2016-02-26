@@ -9,10 +9,10 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">投稿内容</h3>
                 </div>
-                <h2>Title:{{ page.title }}</h2>
-                <p>Text:{{ page.body }}</p>
+                <h2>Title:{{ post.title }}</h2>
+                <p>Text:{{ post.body }}</p>
                 <p class="text-right small">
-                    <a href="{{ url_for('post_comment', postid=page.id) }}" class="btn btn-default">
+                    <a href="{{ url_for('post_comment', post_id=post.id) }}" class="btn btn-default">
                         <span class="glyphicon glyphicon-share-alt" aria-hidden="true">返信する</span>
                     </a>
                 </p>
@@ -30,8 +30,8 @@
                             <li class="list-group-item">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h2 class="media-heading">{{ comment.poster_name }}</h2>
-                                        <span class="small">created_at:{{ comment.post_on }}</span><br><p>Text:{{ comment.cbody }}</p>
+                                        <h2 class="media-heading">{{ comment.author.name }}</h2>
+                                        <span class="small">created_at:{{ comment.post_on }}</span><br><p>Text:{{ comment.body }}</p>
                                     </div>
                                 </div>
                             </li>
