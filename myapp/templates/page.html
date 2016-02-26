@@ -12,9 +12,9 @@
                 <h2>Title:{{ page.title }}</h2>
                 <p>Text:{{ page.body }}</p>
                 <p class="text-right small">
-                    <button>
-                        <span class="glyphicon glyphicon-share-alt" href="{{ url_for('comment') }}" aria-hidden="true">返信する</span>
-                    </button>
+                    <a href="{{ url_for('post_comment', postid=page.id) }}" class="btn btn-default">
+                        <span class="glyphicon glyphicon-share-alt" aria-hidden="true">返信する</span>
+                    </a>
                 </p>
             </div>
 

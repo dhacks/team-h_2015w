@@ -83,16 +83,16 @@ def post():
     return render_template('post.html', form=form)
 
 
-@app.route('/post_comment', methods=('GET', 'POST'))
+@app.route('/post_comment/<int:post_id>', methods=('GET', 'POST'))
 @login_required
-def post_comment():
+def post_comment(post_id):
     """
     本文表示、個別ページ post_idから対応するPOSTのデータをDBからとって表示
     本文したにコメント表示
     """
     form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(author=current_user, post_on=datetime.now(), body=form.body.data)
+        comment = Comment(author=current_user, post_on=datetime.now(), body=form.body.data, post_id=post_id)
         db.session.add(comment)
         db.session.commit()
         print("comment post success")

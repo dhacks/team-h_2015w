@@ -104,7 +104,19 @@ class Comment(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     author = db.relation('User', backref=db.backref('comments', lazy='dynamic'))
 
-    def __init__(self, author, body, post_on):
+    def __init__(self, author, body, post_on, post_id):
         self.author = author
         self.post_on = post_on
         self.body = body
+        self.post_id = post_id
+
+
+class Tag(db.Model):
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+    tagword = db.Column(db.String)
+
+    def __init__(self,tagword):
+        self.tagword = tagword
