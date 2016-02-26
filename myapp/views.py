@@ -30,10 +30,9 @@ def page(post_id):
 
 @app.route('/signup', methods=('GET', 'POST'))
 def signup():
-    form = SignupForm(request.form)
-    if request.method == 'POST':
-        user = User(username=form.username.data, email=form.email.data,
-                    password=form.password.data)
+    form = SignupForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
         login_user(user)
@@ -85,7 +84,7 @@ def post():
 
 
 @app.route('/post_comment', methods=('GET', 'POST'))
-# @login_required
+@login_required
 def post_comment():
     """
     本文表示、個別ページ post_idから対応するPOSTのデータをDBからとって表示
