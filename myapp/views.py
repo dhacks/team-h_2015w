@@ -13,10 +13,10 @@ def index():
     posts = Post.query.order_by(Post.published_on)
     form = SearchForm()
 
-    if request.method == 'POST':
+    if form.validate_on_submit():
         tag = form.tag.data
         print(tag)
-        posts = Post.query.filter_by(tag=tag)  # .order_by(Post.published_on)
+        posts = Post.query.filter(Post.tag.contains(tag)).all()
         return render_template('main.html', form=form, posts=posts)
 
     return render_template('main.html', posts=posts, form=form)
