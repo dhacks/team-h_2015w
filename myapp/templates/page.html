@@ -10,7 +10,7 @@
                     <h3 class="panel-title">{{ post.title }}</h3>
                 </div>
                 <div class="panel-body">
-                    {{ post.body }}
+                    {{ post.body | markdown }}
                 </div>
                 <div class="panel-footer">
                     <p class="text-right small">
@@ -55,36 +55,8 @@
     <!--サイドバー-->
 <div id="sidebar">
     <div class="container">
-        <div id="profile">
-            <div class="container">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"> ユーザ情報</span></h3>
-                    </div>
-                    {% if current_user.is_authenticated %}
-                        <div class="panel-body">
-                        <h4 class="leader">{{ current_user.username }}</h4>
-                        <p>Doshisha Univ.</p>
-                        </div>
-                    {% else %}
-                        <div class="panel-body">
-                            <h4 class="leader">Hello,Stranger</h4>
-                            <p>新規登録は<a href="{{ url_for('signup') }}">こちら</a></p>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
-        </div>
-
-        <div id="taglist">
-            <div class="container">
-                <div class="list-group">
-                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> HTML</span></a>
-                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> CSS</span></a>
-                    <a class="list-group-item" href="#"><span class="glyphicon glyphicon-tag" aria-hidden="true"> JavaScript</span></a>
-                </div>
-            </div>
-        </div>
+        {% include 'profile.html' %}
+        {% include 'tag.html' %}
     </div>
 </div>
 {% endblock %}

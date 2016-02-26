@@ -7,7 +7,7 @@ from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
 from flask_wtf.csrf import CsrfProtect
 from flask.ext.login import LoginManager
-
+from flaskext.markdown import Markdown
 
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__)
@@ -33,6 +33,8 @@ app.secret_key = 'hogehoge'
 CsrfProtect(app)
 #Flask-Bootstrap
 Bootstrap(app)
+#Flask-Markdown
+Markdown(app)
 
 ######################################################
 def getdb():
