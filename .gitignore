@@ -1,3 +1,4 @@
 .idea
 migrations
 __pycache__
+*.db
