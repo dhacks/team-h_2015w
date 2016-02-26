@@ -8,7 +8,7 @@ from myapp.forms import Login, Signup, Post_Form, Comment_Form, Search_Form
 from myapp.models import User, Post, Comment
 
 
-@app.route('/',methods=('GET', 'POST'))
+@app.route('/', methods=('GET', 'POST'))
 def index():
     posts = Post.query.order_by(Post.published_on)
     form = Search_Form()
@@ -16,15 +16,16 @@ def index():
     if request.method == 'POST':
         tag = form.tag.data
         print(tag)
-        posts = Post.query.filter_by(tag=tag)#.order_by(Post.published_on)
-        return render_template('main.html',form=form,posts=posts)
+        posts = Post.query.filter_by(tag=tag)  # .order_by(Post.published_on)
+        return render_template('main.html', form=form, posts=posts)
 
     return render_template('main.html', posts=posts, form=form)
 
-@app.route('/<int:postid>')
-def page(postid):
-    page = Post.query.get(postid)
-    return render_template('page.html', page=page)
+
+@app.route('/<int:post_id>')
+def page(post_id):
+    article = Post.query.get(post_id)
+    return render_template('page.html', page=article)
 
 
 @app.route('/signup', methods=('GET', 'POST'))
@@ -73,9 +74,8 @@ def post():
     """
     form = Post_Form()
     if form.validate_on_submit():
-        post = Post(title=form.title.data, author_id=current_user.get_id(), tag=form.tag.data,
-                    body=form.body.data, published_on=datetime.now())
-        db.session.add(post)
+        article = Post(title=form.title.data, author=current_user, tag=form.tag.data, body=form.body.data, published_on=datetime.now())
+        db.session.add(article)
         db.session.commit()
         print("post success")
         flash('Successfully posted')
@@ -92,10 +92,10 @@ def post_comment():
     """
     form = Comment_Form()
     if form.validate_on_submit():
-        cmmnt = Comment(author_name=current_user.name, post_on=datetime.now(), body=form.cbody.data)
-        db.session.add(cmmnt)
+        comment = Comment(author=current_user, post_on=datetime.now(), body=form.cbody.data)
+        db.session.add(comment)
         db.session.commit()
-        print("comment post succenss")
+        print("comment post success")
         return redirect(url_for('post_main'))
 
     return render_template('editor.html', form=form)
