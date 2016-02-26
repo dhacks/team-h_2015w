@@ -2,16 +2,17 @@
 {% import "bootstrap/wtf.html" as wtf %}
 
 {% block main %}
-<div id="document">
-    <div class="container">
-        {{ wtf.quick_form(form, form_type="basic") }}
+    <div id="document">
+        <div class="container">
+            {{ wtf.quick_form(form, form_type="basic") }}
+        </div>
     </div>
-</div>
 
-        <!--サイドバー-->
-<div id="sidebar">
-    <div class="container">
-        {% include 'profile.html' %}
-        {% include 'tag.html' %}
-</div>
+    <!--サイドバー-->
+    <div id="sidebar">
+        <div class="container">
+            {% include 'profile.html' %}
+            {% include 'tag.html' %}
+        </div>
+    </div>
 {% endblock %}
