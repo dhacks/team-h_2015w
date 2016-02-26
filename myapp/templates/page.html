@@ -7,15 +7,23 @@
             <div class="panel panel-default">
                 <!-- Default panel contents -->
                 <div class="panel-heading">
-                    <h3 class="panel-title">投稿内容</h3>
+                    <h3 class="panel-title">{{ post.title }}</h3>
                 </div>
-                <h2>Title:{{ post.title }}</h2>
-                <p>Text:{{ post.body }}</p>
-                <p class="text-right small">
-                    <a href="{{ url_for('post_comment', post_id=post.id) }}" class="btn btn-default">
-                        <span class="glyphicon glyphicon-share-alt" aria-hidden="true">返信する</span>
-                    </a>
-                </p>
+                <div class="panel-body">
+                    {{ post.body }}
+                </div>
+                <div class="panel-footer">
+                    <p class="text-right small">
+                        {% if current_user == post.author %}
+                            <a href="#" class="btn btn-danger">
+                                <span class="glyphicon glyphicon-trash" aria-hidden="true"> 削除</span>
+                            </a>
+                        {% endif %}
+                        <a href="{{ url_for('post_comment', post_id=post.id) }}" class="btn btn-default">
+                            <span class="glyphicon glyphicon-share-alt" aria-hidden="true"> 返信</span>
+                        </a>
+                    </p>
+                </div>
             </div>
 
             <div class="panel panel-default">
@@ -23,10 +31,11 @@
                 <div class="panel-heading">
                     <h3 class="panel-title">返信一覧</h3>
                 </div>
-                <ul>
-                    {% for comment in comments %}
-                        <!-- 投稿に関する返信を全て表示 -->
-                        <!-- if post_id == comment_id みたいな -->
+                <div class="panel-body">
+                    <ul>
+                        {% for comment in comments %}
+                            <!-- 投稿に関する返信を全て表示 -->
+                            <!-- if post_id == comment_id みたいな -->
                             <li class="list-group-item">
                                 <div class="media">
                                     <div class="media-body">
@@ -35,8 +44,9 @@
                                     </div>
                                 </div>
                             </li>
-                    {% endfor %}
-                </ul>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
