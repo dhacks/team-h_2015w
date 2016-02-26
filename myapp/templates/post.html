@@ -1,24 +1,10 @@
 {% extends "base.html" %}
-
+{% import "bootstrap/wtf.html" as wtf %}
 
 {% block main %}
 <div id="document">
     <div class="container">
-        <form method="POST">
-        {{ form.csrf_token }}
-            <div class="jumbotron">
-                <div class="panel panel-default">
-                    <!-- Default panel contents -->
-                    <div class="panel-heading">
-                        <h3 class="panel-title">投稿内容</h3>
-                    </div>
-                    <p>{{ form.title.label }} :<br> {{ form.title }}</p>
-                    <p>{{ form.body.label }} :<br> {{ form.body }}</p>
-                    <p>{{ form.tag.label }} :<br> {{ form.tag }}</p>
-                    <p class="text-right">{{ form.submit }}</p>
-                </div>
-            </div>
-        </form>
+        {{ wtf.quick_form(form, form_type="basic") }}
     </div>
 </div>
 
