@@ -1,0 +1,20 @@
+<div id="profile">
+    <div class="container">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title"><span class="glyphicon glyphicon-user" aria-hidden="true"> Profile</span></h3>
+            </div>
+            {% if current_user.is_authenticated %}
+                <div class="panel-body">
+                    <h4 class="leader">{{ current_user.username }}</h4>
+                    <p>Doshisha Univ.</p>
+                </div>
+            {% else %}
+                <div class="panel-body">
+                    <h4 class="leader">Hello, Stranger</h4>
+                    <p>Sign up <a href="{{ url_for('signup') }}">here</a>.</p>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>
