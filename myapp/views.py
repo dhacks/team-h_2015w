@@ -4,14 +4,14 @@ from flask import render_template, flash, url_for, redirect, request
 from flask.ext.login import login_user, logout_user, login_required, current_user
 
 from myapp import app, db
-from myapp.forms import Login, Signup, Post_Form, Comment_Form, Search_Form
+from myapp.forms import LoginForm, SignupForm, PostForm, CommentForm, SearchForm
 from myapp.models import User, Post, Comment
 
 
 @app.route('/', methods=('GET', 'POST'))
 def index():
     posts = Post.query.order_by(Post.published_on)
-    form = Search_Form()
+    form = SearchForm()
 
     if request.method == 'POST':
         tag = form.tag.data
@@ -30,10 +30,9 @@ def page(post_id):
 
 @app.route('/signup', methods=('GET', 'POST'))
 def signup():
-    form = Signup(request.form)
-    if request.method == 'POST':
-        user = User(username=form.username.data, email=form.email.data,
-                    password=form.pswd1.data)
+    form = SignupForm()
+    if form.validate_on_submit():
+        user = User(username=form.username.data, email=form.email.data, password=form.password.data)
         db.session.add(user)
         db.session.commit()
         login_user(user)
@@ -44,10 +43,10 @@ def signup():
 
 @app.route('/login', methods=('GET', 'POST'))
 def login():
-    form = Login()
+    form = LoginForm()
     if form.validate_on_submit():
         user = User.query.filter_by(email=form.email.data).first()
-        if user.verify_password(form.pswd.data):
+        if user.verify_password(form.password.data):
             login_user(user)
             print('login success!')
             return redirect(url_for('index'))
@@ -73,7 +72,7 @@ def post():
     """
     記事をポストするページ
     """
-    form = Post_Form()
+    form = PostForm()
     if form.validate_on_submit():
         article = Post(title=form.title.data, author=current_user, tag=form.tag.data, body=form.body.data, published_on=datetime.now())
         db.session.add(article)
@@ -85,15 +84,15 @@ def post():
 
 
 @app.route('/post_comment', methods=('GET', 'POST'))
-# @login_required
+@login_required
 def post_comment():
     """
     本文表示、個別ページ post_idから対応するPOSTのデータをDBからとって表示
     本文したにコメント表示
     """
-    form = Comment_Form()
+    form = CommentForm()
     if form.validate_on_submit():
-        comment = Comment(author=current_user, post_on=datetime.now(), body=form.cbody.data)
+        comment = Comment(author=current_user, post_on=datetime.now(), body=form.body.data)
         db.session.add(comment)
         db.session.commit()
         print("comment post success")
