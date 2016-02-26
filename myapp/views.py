@@ -96,6 +96,5 @@ def post_comment(post_id):
         db.session.add(comment)
         db.session.commit()
         print("comment post success")
-        return redirect(url_for('post_main'))
-
+        return redirect(url_for('index'))
     return render_template('editor.html', form=form)
