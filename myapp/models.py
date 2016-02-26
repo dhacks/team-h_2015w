@@ -63,6 +63,10 @@ class User(UserMixin, db.Model):
 #        """False, as anonymous users aren't supported."""
 #        return False
 
+posttags = db.Table("posttags",
+        db.Column("post_id",db.Integer,db.ForeignKey("post.id")),
+        db.Column("tag_id",db.Integer,db.ForeignKey("tags.id"))
+        )
 
 class Post(db.Model):
     """
@@ -78,6 +82,8 @@ class Post(db.Model):
 
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     author = db.relation('User', backref=db.backref('posts', lazy='dynamic'))
+
+    tags = db.relationship("Post",secondary=posttags,backref="post")
 
     def __init__(self, title, tag, body, author_id, published_on):
         self.author_id = author_id
@@ -105,3 +111,14 @@ class Comment(db.Model):
         self.author_name = author_name
         self.post_on = post_on
         self.body = body
+
+
+class Tag(db.Model):
+
+    __tablename__ = 'tags'
+
+    id = db.Column(db.Integer, primary_key=True)
+    tagword = db.Column(db.String)
+
+    def __init__(self,tagword):
+        self.tagword = tagword
