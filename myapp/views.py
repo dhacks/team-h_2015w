@@ -36,6 +36,7 @@ def signup():
                     password=form.pswd1.data)
         db.session.add(user)
         db.session.commit()
+        login_user(user)
         flash('Thanks, you are registered')
         return redirect(url_for('index'))
     return render_template('register.html', form=form)
