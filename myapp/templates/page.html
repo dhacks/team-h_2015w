@@ -34,13 +34,12 @@
                 <div class="panel-body">
                     <ul>
                         {% for comment in comments %}
-                            <!-- 投稿に関する返信を全て表示 -->
-                            <!-- if post_id == comment_id みたいな -->
                             <li class="list-group-item">
                                 <div class="media">
                                     <div class="media-body">
-                                        <h2 class="media-heading">{{ comment.author.name }}</h2>
-                                        <span class="small">created_at:{{ comment.post_on }}</span><br><p>Text:{{ comment.body }}</p>
+                                        <h2 class="media-heading">{{ comment.author.username }}</h2>
+                                        <span class="small">{{ comment.post_on.strftime('%c') }}</span><br>
+                                        {{ comment.body | markdown }}
                                     </div>
                                 </div>
                             </li>
