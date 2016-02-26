@@ -43,6 +43,7 @@ class User(UserMixin, db.Model):
         """
         ハッシュ化（パスワード（生）） == バスワード（ハッシュ）
         -> True
+        :param password: str
         """
         return check_password_hash(self.password_hash, password)
 
@@ -79,8 +80,8 @@ class Post(db.Model):
     author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     author = db.relation('User', backref=db.backref('posts', lazy='dynamic'))
 
-    def __init__(self, title, tag, body, author_id, published_on):
-        self.author_id = author_id
+    def __init__(self, title, tag, body, author, published_on):
+        self.author = author
         self.title = title
         self.tag = tag
         self.body = body
@@ -94,14 +95,16 @@ class Comment(db.Model):
     __tablename__ = 'comment'
 
     id = db.Column(db.Integer, primary_key=True)
-    author_name = db.Column(db.String())
     post_on = db.Column(db.DateTime)
     body = db.Column(db.Text)
 
     post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
     post = db.relation('Post', backref=db.backref('comments', lazy='dynamic'))
 
-    def __init__(self, author_name, post_on, body):
-        self.author_name = author_name
+    author_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+    author = db.relation('User', backref=db.backref('comments', lazy='dynamic'))
+
+    def __init__(self, author, body, post_on):
+        self.author = author
         self.post_on = post_on
         self.body = body
