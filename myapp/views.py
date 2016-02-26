@@ -25,7 +25,7 @@ def index():
 @app.route('/<int:post_id>')
 def page(post_id):
     article = Post.query.get(post_id)
-    return render_template('page.html', page=article)
+    return render_template('page.html', post=article)
 
 
 @app.route('/signup', methods=('GET', 'POST'))
