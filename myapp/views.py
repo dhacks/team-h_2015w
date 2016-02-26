@@ -25,7 +25,8 @@ def index():
 @app.route('/<int:post_id>')
 def page(post_id):
     article = Post.query.get(post_id)
-    return render_template('page.html', post=article)
+    comments = Comment.query.filter_by(post=article)
+    return render_template('page.html', post=article, comments=comments)
 
 
 @app.route('/signup', methods=('GET', 'POST'))
@@ -96,5 +97,5 @@ def post_comment(post_id):
         db.session.add(comment)
         db.session.commit()
         print("comment post success")
-        return redirect(url_for('index'))
+        return redirect('/{:d}'.format(post_id))
     return render_template('editor.html', form=form)

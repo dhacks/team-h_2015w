@@ -2,57 +2,57 @@
 
 {% block main %}
 
-<div id="document">
-    <div class="container">
-        <div class="input-group">
-            <input type="text" class="form-control">
+    <div id="document">
+        <div class="container">
+            <div class="input-group">
+                <input type="text" class="form-control">
             <span class="input-group-btn">
                 <button class="btn btn-default" type="submit">
                     <span class="glyphicon glyphicon-search" aria-hidden="true"> Search</span>
                 </button>
             </span>
+            </div>
         </div>
-    </div>
-    <div class="container">
-        <div class="jumbotron">
-            <!-- 全員の投稿表示領域 -->
-            <div class="panel panel-default">
-                <!-- Default panel contents -->
-                <div class="panel-heading">
-                    <h3 class="panel-title">Articles</h3>
-                </div>
-                <!-- List group -->
-                <ul class="list-group">
-                    <!--
-                    <a class="list-group-item list-group-item-success" href="#">メニューＡ</a>
-                    <a class="list-group-item list-group-item-info" href="#">メニューＢ</a>
-                    <a class="list-group-item list-group-item-warning" href="#">メニューＣ</a>
-                    <a class="list-group-item list-group-item-danger" href="#">メニューＤ</a>
-                    -->
-                    {% for post in posts %}
-                        <li class="list-group-item">
-                            <div class="media">
-                                <div class="media-body">
-                                    <h2 class="media-heading"><a href="/{{post.id}}">{{ post.title }}</a></h2>
-                                    by {{ post.author.username }}<br>
-                                    <h3><span class="small glyphicon glyphicon-tag" aria-hidden="true">{{ post.tag }}</span></h3>
-                                    <span class="small">{{ post.published_on.strftime('%c') }}</span>
+        <div class="container">
+            <div class="jumbotron">
+                <!-- 全員の投稿表示領域 -->
+                <div class="panel panel-default">
+                    <!-- Default panel contents -->
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Articles</h3>
+                    </div>
+                    <!-- List group -->
+                    <ul class="list-group">
+                        <!--
+                        <a class="list-group-item list-group-item-success" href="#">メニューＡ</a>
+                        <a class="list-group-item list-group-item-info" href="#">メニューＢ</a>
+                        <a class="list-group-item list-group-item-warning" href="#">メニューＣ</a>
+                        <a class="list-group-item list-group-item-danger" href="#">メニューＤ</a>
+                        -->
+                        {% for post in posts %}
+                            <li class="list-group-item">
+                                <div class="media">
+                                    <div class="media-body">
+                                        <h2 class="media-heading"><a href="/{{ post.id }}">{{ post.title }}</a></h2>
+                                        by {{ post.author.username }}<br>
+                                        <h3><span class="small glyphicon glyphicon-tag" aria-hidden="true">{{ post.tag }}</span></h3>
+                                        <span class="small">{{ post.published_on.strftime('%c') }}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </li>
-                    {% endfor %}
-                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!--サイドバー-->
-<div id="sidebar">
-    <div class="container">
-        {% include 'profile.html' %}
-        {% include 'tag.html' %}
+    <!--サイドバー-->
+    <div id="sidebar">
+        <div class="container">
+            {% include 'profile.html' %}
+            {% include 'tag.html' %}
+        </div>
     </div>
-</div>
 
 {% endblock %}
