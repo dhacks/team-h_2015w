@@ -25,8 +25,8 @@ class PostForm(Form):
 
 
 class CommentForm(Form):
-    body = TextAreaField('comment body', validators=[InputRequired()])
-
+    body = TextAreaField('Comment', validators=[InputRequired()])
+    submit = SubmitField('Submit')
 
 class SearchForm(Form):
     tag = StringField('tag')
