@@ -4,7 +4,7 @@
         padding: 0px;
         margin: 0px;
     }
-}
+
 #footer {
     clear: both;
     width: 100%;
@@ -13,6 +13,22 @@
 
 #footer .container {
     width: 100%;
+}
+
+#body {
+    height: 400px;
+}
+
+.create_post {
+    margin-bottom: 10px;
+}
+
+.write_text {
+        height: 400px;
+}
+
+#marked-mathjax-preview-buffer{
+    margin: 0px;
 }
 
 #document{
