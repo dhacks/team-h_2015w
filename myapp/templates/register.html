@@ -11,28 +11,28 @@
                 <form method="POST" class="form-horizontal" role="form">
                     {{ form.csrf_token }}
                     <div class="form-group">
-                        <div class="col-sm-2"><label for="inputEmail3" class="control-label">NAME</label></div>
-                        <div class="col-sm-10">{{ form.username() }}</div>
+                        <div class="col-sm-2 col-sm-offset-4"><label for="inputEmail3" class="control-label">Name</label></div>
+                        <div class="col-sm-3">{{ form.username(class= "form-control") }}</div>
                     </div>
 
                    <div class="form-group">
-                        <div class="col-sm-2"><label for="inputEmail3" class="control-label">Email</label></div>
-                        <div class="col-sm-10">{{ form.email() }}</div>
+                        <div class="col-sm-2 col-sm-offset-4"><label for="inputEmail3" class="control-label">Email</label></div>
+                        <div class="col-sm-3">{{ form.email(class= "form-control", placeholder= "example@example.com") }}</div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-2"><label for="inputPassword3" class="control-label">Password</label></div>
-                        <div class="col-sm-10">{{ form.pswd1() }}
+                        <div class="col-sm-2 col-sm-offset-4"><label for="inputPassword3" class="control-label">Password</label></div>
+                        <div class="col-sm-3">{{ form.pswd1(class= "form-control") }}
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-2"><label for="inputPassword3" class="control-label">Password(for Confilm)</label></div>
-                        <div class="col-sm-10">{{ form.pswd2() }}</div>
+                        <div class="col-sm-2 col-sm-offset-4"><label for="inputPassword3" class="control-label">Password(for Confilm)</label></div>
+                        <div class="col-sm-3">{{ form.pswd2(class= "form-control") }}</div>
                     </div>
 
                     <div class="form-group">
-                        <div class="col-sm-offset-2 col-sm-10">
+                        <div class="col-sm-offset-5 col-sm-2">
                             <button type="submit" class="btn btn-default">Sign up</button>
                         </div>
                     </div>

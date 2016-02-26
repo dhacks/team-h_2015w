@@ -5,7 +5,6 @@
         margin: 0px;
     }
 }
-
 #footer {
     clear: both;
     width: 100%;
@@ -24,10 +23,15 @@
     width: 80%;
 }
 
-#document .container{
+#document .container {
     margin: 0px;
     padding: 0px;
     width: 100%;
+}
+
+.section .container .row .col-sm-2 {
+    margin-bottom: 0px;
+    margin-top: 10px !important;
 }
 
 #document .container .input-group{
