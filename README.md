@@ -1,6 +1,9 @@
 # Hello World
 TYPE DESCRIPTION HERE
 
+## Screenshot
+![](screenshot/1.png)
+
 ## How to run
 
 ### Pre-Requirements
